@@ -1,4 +1,4 @@
 export const backendUrl =
-"http://localhost:5000";
-  // "https://api.vaishakhimatrimony.com";
+"https://api.vaishakhimatrimony.com";
+// "http://localhost:5000";
 // export const backendUrl = "http://localhost:5000";
