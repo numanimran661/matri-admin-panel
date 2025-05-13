@@ -353,6 +353,9 @@ const Members = () => {
                   Mobile Number
                 </th>
                 <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Payment Status
+                </th>
+                <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
                 </th>
                 <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -392,6 +395,16 @@ const Members = () => {
                   </td>
                   <td className="p-3 whitespace-nowrap">
                     <div className="text-sm text-gray-500">{item.phone}</div>
+                  </td>
+                  <td className="p-3 whitespace-nowrap">
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${item.isPaid
+                        ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
+                        }`}
+                    >
+                      {item.isPaid ? "Paid" : "Un-Paid"}
+                    </span>
                   </td>
                   <td className="p-3 whitespace-nowrap">
                     <span
