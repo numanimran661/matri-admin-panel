@@ -33,8 +33,21 @@ const EditUserForm = () => {
             const userData = response.data.user;
 
             if (userData.dateOfBirth) {
-                const date = new Date(userData.dateOfBirth);
-                userData.dateOfBirth = date.toISOString().split('T')[0];
+                let date;
+                if (userData.dateOfBirth.includes("/")) {
+                    // Format like 25/2/1992
+                    const [day, month, year] = userData.dateOfBirth.split("/").map(Number);
+                    date = new Date(year, month - 1, day);
+                } else {
+                    // Format like 1993-03-15
+                    date = new Date(userData.dateOfBirth);
+                }
+
+                if (!isNaN(date.getTime())) {
+                    userData.dateOfBirth = date.toISOString().split("T")[0];
+                } else {
+                    console.warn("Invalid date received:", userData.dateOfBirth);
+                }
             }
 
             setUser(response.data.user);
